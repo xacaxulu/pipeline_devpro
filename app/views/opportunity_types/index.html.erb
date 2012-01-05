@@ -1,0 +1,23 @@
+<h1>Listing opportunity_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @opportunity_types.each do |opportunity_type| %>
+  <tr>
+    <td><%= opportunity_type.name %></td>
+    <td><%= link_to 'Show', opportunity_type %></td>
+    <td><%= link_to 'Edit', edit_opportunity_type_path(opportunity_type) %></td>
+    <td><%= link_to 'Destroy', opportunity_type, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Opportunity type', new_opportunity_type_path %>

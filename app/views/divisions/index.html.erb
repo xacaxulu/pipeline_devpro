@@ -1,0 +1,21 @@
+<h1>Listing divisions</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <tr>
+    <% a = @divisions.collect{|n| n.name} %>
+    <% a.each do |b| %>
+      <%= b %><br />  
+    <% end %>
+   
+  </tr>
+</table>
+
+
+<%= link_to 'New Division', new_division_path %>

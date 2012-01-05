@@ -1,0 +1,44 @@
+
+<h1 class='header'><%= link_to 'TECHNEKES PIPELINE', fiscal_projections_path %></h1>
+<tr>
+<div id="new_program_link"><%= link_to 'Create A New Program', new_program_path %></div>
+<div id="edit_program_link"><%= link_to 'Edit a Program', 'programs#show' %></div></tr>
+<%= paginate @programs %>
+<table id="data">
+  <thead>
+    <tr>
+      <th class="client">Client</th>
+      <th class="division">Division</th>
+      <th class="program"><%= collection_select(:program, :name, @all_programs, :id, :full_name, options={:prompt => "-Select a Program"}) %></th>
+      <th class="funnel_stage">Funnel Stage</th>
+      <th class="practice_group">Practice Group</th>
+      <th>Opportunity Type</th>
+      <% sorted_month_indexes.each do |d|%>
+        <th><%= Time.utc(current_year, d).strftime('%b') %></th>
+      <% end %>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @programs.each do |program| %>
+      <tr>
+        <td><%= program.division.client.name %></td>
+        <td><%= program.division.name %></td>
+        <td><%= program.name %></td>
+        <td class="funnel_stage">
+         <%= collection_select(:funnel_stage, :name, @funnel_stages, :id, :name, options ={:selected => program.funnel_stage.id}, "data-program-id" => program.id)%>
+        </td>
+        <td class="practice_group"><%= program.division.practice_group.name %></td>
+        <td class="opportunity_type"><%= program.opportunity_type.name %></td>
+        <% sorted_months.each do |month| %>
+          <% fiscal_projection = get_fiscal_projection(month[:id], month[:year], program.id) %>
+          <td><%= text_field_tag 'month', fiscal_projection.amount, 'data-year' => month[:year], 'data-month' => month[:id], 'data-id' => fiscal_projection.id || -1, 'data-program-id'  => program.id %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>  
+</table>
+
+
+<%= paginate @programs %>
+

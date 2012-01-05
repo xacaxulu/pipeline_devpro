@@ -1,0 +1,48 @@
+<%= form_for(@program) do |f| %>
+  <% if @program.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being saved:</h2>
+
+      <ul>
+      <% @program.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ **IF NO DIVISION EXISTS FOR THE PROGRAM YOU ARE CREATING, PLEASE CREATE A NEW DIVISION <%= link_to 'HERE', new_division_path %>**
+    <div class="field">
+      <tr>
+        <%= f.label "Division" %>
+        <%= f.select :division_id, Division.order('id DESC').collect {|n| [n.name,n.id]} %>
+        
+      </tr>
+    </div>
+
+    <div class="field">
+      <tr>
+        <%= f.label "Program Name" %>
+        <%= f.text_field :name %>
+      </tr>   
+    </div>
+    
+    <div class="field">
+      <tr>
+        <%= f.label "Funnel Stage" %>
+        <%= f.select :funnel_stage_id, FunnelStage.all.collect{|f| [f.name,f.id]}, options={:prompt => "-Select a Funnel Stage"} %>
+      </tr>   
+    </div>
+    
+    <div class="field">
+      <tr>
+        <%= f.label "Opportunity Type" %>
+        <%= f.select :opportunity_type_id, OpportunityType.all.collect{|o| [o.name,o.id]}, options={:prompt => "-Select an Opportunity Type"} %>
+      </tr>   
+    </div>
+
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+
+<% end %>

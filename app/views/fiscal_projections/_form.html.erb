@@ -1,0 +1,24 @@
+<%= form_for(@fiscal_projection) do |f| %>
+  <% if @fiscal_projection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fiscal_projection.errors.count, "error") %> prohibited this division from being saved:</h2>
+
+      <ul>
+      <% @fiscal_projection.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label "Program" %><br />
+    <%= f.select :program_id, Program.order('id DESC').collect {|p| [p.name,p.id]} %>
+  </div>
+  
+  
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

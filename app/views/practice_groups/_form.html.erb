@@ -1,0 +1,21 @@
+<%= form_for(@practice_group) do |f| %>
+  <% if @practice_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@practice_group.errors.count, "error") %> prohibited this practice_group from being saved:</h2>
+
+      <ul>
+      <% @practice_group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

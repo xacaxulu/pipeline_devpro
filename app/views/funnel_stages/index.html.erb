@@ -1,0 +1,23 @@
+<h1>Listing funnel_stages</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @funnel_stages.each do |funnelstage| %>
+  <tr>
+    <td><%= funnelstage.name %></td>
+    <td><%= link_to 'Show', funnelstage %></td>
+    <td><%= link_to 'Edit', edit_funnel_stage_path(funnelstage) %></td>
+    <td><%= link_to 'Destroy', funnelstage, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Funnelstage', new_funnel_stage_path %>

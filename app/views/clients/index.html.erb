@@ -1,0 +1,27 @@
+<h1>Listing clients</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <tr>
+     <td>
+        <% form_for :clients do |f|%>
+        <%= f.collection_select(f.name, Client.find(:all), :id, :name) %>) %>
+        <%= f.submit%>
+        <% end %>
+        
+      </td>
+    
+  </tr>
+</table>
+
+<br />
+
+ 
+
+<%= link_to 'New Client', new_client_path %>

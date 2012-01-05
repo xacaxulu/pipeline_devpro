@@ -1,0 +1,21 @@
+<%= form_for(@funnel_stage) do |f| %>
+  <% if @funnel_stage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@funnel_stage.errors.count, "error") %> prohibited this funnelstage from being saved:</h2>
+
+      <ul>
+      <% @funnel_stage.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

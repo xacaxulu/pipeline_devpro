@@ -1,0 +1,24 @@
+<h1>LIST OF PROGRAMS</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Division</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= select(:division, :id, @divisions.collect {|d| [d.name,d.id]}, :prompt  => "Select a Division")%></td>
+  </tr>
+  <tr>
+    <td id="program"><%= select(:program, :id, [], options={:prompt  => "Select a Program"}) %></td>
+  </tr>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'Homepage', fiscal_projections_path %>

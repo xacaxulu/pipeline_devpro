@@ -1,0 +1,34 @@
+<%= form_for(@division) do |f| %>
+  <% if @division.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@division.errors.count, "error") %> prohibited this division from being saved:</h2>
+
+      <ul>
+      <% @division.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label "Client" %><br />
+    <%= f.select :client_id, Client.order('id DESC').collect {|n| [n.name,n.id]} %>
+    **If no CLIENT exists for the Division you wish to create please click <%= link_to 'here', new_client_path %>**
+  </div>
+  
+  
+  <div class="field">
+    <%= f.label 'Practice Group' %><br />
+    <%= f.select :practice_group_id, PracticeGroup.order('name').collect {|p| [p.name,p.id]}, options={:prompt => "-Select a Practice Group"} %>
+  </div>
+
+  <div class="field">
+    Division
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

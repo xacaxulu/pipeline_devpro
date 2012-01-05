@@ -1,0 +1,21 @@
+<%= form_for(@opportunity_type) do |f| %>
+  <% if @opportunity_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@opportunity_type.errors.count, "error") %> prohibited this opportunity_type from being saved:</h2>
+
+      <ul>
+      <% @opportunity_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Opportunity Type" %><br />
+    <%= f.select :name , opportunity_select_options %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
