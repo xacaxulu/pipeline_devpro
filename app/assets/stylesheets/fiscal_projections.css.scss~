@@ -1,7 +1,7 @@
 // Place all the styles related to the FiscalProjections controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-table div{
+table#data {
   border-collapse: collapse;
   border: solid 1px #999999;
   box-shadow: 2px 2px 4px #cccccc;
